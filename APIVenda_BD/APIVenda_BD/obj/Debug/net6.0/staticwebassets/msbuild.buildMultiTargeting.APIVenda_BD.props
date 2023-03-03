@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\APIVenda_BD.props" />
+</Project>
