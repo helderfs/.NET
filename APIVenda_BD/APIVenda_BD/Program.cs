@@ -30,14 +30,13 @@ builder.Services.AddAuthentication(options =>
 {
     o.TokenValidationParameters = new TokenValidationParameters
     {
-        ValidIssuer = builder.Configuration["Jwt:Issuer"],
-        ValidAudience = builder.Configuration["Jwt:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey
-        (Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
         ValidateIssuer = true,
         ValidateAudience = true,
         ValidateLifetime = false,
-        ValidateIssuerSigningKey = true
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
     };
 });
 
@@ -59,12 +58,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
 
 // INI - JWT Auth
 app.MapPost("/security/createToken",
@@ -105,8 +98,18 @@ app.MapGet("/", () => "Hello World");
 app.MapGet("/security/getMessage", () => "SEGURANCA!!!!").RequireAuthorization();
 //app.MapGet("/Vendas/grafico", () => "TESTE").RequireAuthorization();
 
+app.UseHttpsRedirection();
+app.MapControllers();
+app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseEndpoints(endpoints =>
+    { 
+        endpoints.MapControllers();
+        //endpoints.MapRazorPages();
+    }
+);
 // FIM - JWT Auth
 
 //app.UseMvc();

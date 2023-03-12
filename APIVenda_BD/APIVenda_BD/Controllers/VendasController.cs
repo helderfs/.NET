@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using APIVenda_BD.Data;
 using APIVenda_BD.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace APIVenda_BD.Controllers
 {
@@ -24,17 +25,38 @@ namespace APIVenda_BD.Controllers
             _context = context;
         }
 
-        [Authorize]
+        /*
+        private VendasMod GetCurrentVenda()
+        {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+
+            if (identity != null)
+            {
+                var claims = identity.Claims;
+
+                return new VendasMod
+                {
+                    Codigo = claims.FirstOrDefault(o => o.Type == ClaimTypes.NameIdentifier)?.Value,
+
+                }
+
+            }
+            return null;
+
+        }
+        */
+
         // GET: api/Vendas
         [HttpGet("grafico")]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<VendasMod>>> GetVendasMod()
         {
             return await _context.VendasMod.ToListAsync();
         }
 
-        [Authorize]
         // GET: api/Vendas/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<VendasMod>> GetVendasMod(int id)
         {
             var vendasMod = await _context.VendasMod.FindAsync(id);
@@ -49,8 +71,8 @@ namespace APIVenda_BD.Controllers
 
         // PUT: api/Vendas/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [Authorize]
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutVendasMod(int id, VendasMod vendasMod)
         {
             if (id != vendasMod.Codigo)
@@ -81,8 +103,8 @@ namespace APIVenda_BD.Controllers
 
         // POST: api/Vendas
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [Authorize]
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<VendasMod>> PostVendasMod(VendasMod vendasMod)
         {
             _context.VendasMod.Add(vendasMod);
@@ -92,8 +114,8 @@ namespace APIVenda_BD.Controllers
         }
 
         // DELETE: api/Vendas/5
-        [Authorize]
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteVendasMod(int id)
         {
             var vendasMod = await _context.VendasMod.FindAsync(id);

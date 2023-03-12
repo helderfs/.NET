@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\.NET\\APIVenda_BD\\APIVenda_BD\\APIVenda_BD.csproj": {}
+    "C:\\Git\\.NET\\APIVenda_BD\\APIVenda_BD\\APIVenda_BD.csproj": {}
   },
   "projects": {
-    "C:\\.NET\\APIVenda_BD\\APIVenda_BD\\APIVenda_BD.csproj": {
+    "C:\\Git\\.NET\\APIVenda_BD\\APIVenda_BD\\APIVenda_BD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\.NET\\APIVenda_BD\\APIVenda_BD\\APIVenda_BD.csproj",
+        "projectUniqueName": "C:\\Git\\.NET\\APIVenda_BD\\APIVenda_BD\\APIVenda_BD.csproj",
         "projectName": "APIVenda_BD",
-        "projectPath": "C:\\.NET\\APIVenda_BD\\APIVenda_BD\\APIVenda_BD.csproj",
+        "projectPath": "C:\\Git\\.NET\\APIVenda_BD\\APIVenda_BD\\APIVenda_BD.csproj",
         "packagesPath": "C:\\Users\\hfsantos1\\.nuget\\packages\\",
-        "outputPath": "C:\\.NET\\APIVenda_BD\\APIVenda_BD\\obj\\",
+        "outputPath": "C:\\Git\\.NET\\APIVenda_BD\\APIVenda_BD\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hfsantos1\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -64,6 +64,10 @@
               "target": "Package",
               "version": "[7.0.3, )"
             },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.27.0, )"
+            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[6.0.12, )"
@@ -75,6 +79,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.22.0, )"
             }
           },
           "imports": [
